@@ -1,4 +1,5 @@
 const http = require("http");
+<<<<<<< HEAD
 const url = require("url");
 const fs = require("fs");
 
@@ -17,6 +18,24 @@ const myServer = http.createServer((req, res) => {
             break;
         default:
     }
+=======
+const fs = require("fs");
+
+const myServer = http.createServer((req, res) => {
+    const log = `Request is received on ${req.url} at ${Date.now()}\n`
+    fs.appendFile("logs.txt", log, (err, data) => {
+        switch(req.url) {
+            case "/":
+                res.end("Home page");
+                break;
+            case "/about":
+                res.end("About page");
+                break;
+            default:
+                res.end("404 Not Found");
+        }
+    });
+>>>>>>> f5f0d6c957ed40d137dc5499fbba0fa24d389772
 });
 
 myServer.listen(8000, () => console.log("Server is running !"));
